@@ -27,7 +27,7 @@ def taskList(request):
 def taskDetail(request, todo_id):
     tasks = Todo.objects.get(id=todo_id)
     serialize = TodoSerializer(tasks, many=False)
-    return Response(serialize.data)
+    return Response(serialize.data, status=status.HTTP_200_OK)
 
 # Update Task
 @api_view(['POST'])
@@ -36,7 +36,7 @@ def taskUpdate(request, todo_id):
     serializer = TodoSerializer(instance=task, data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Create Task
 @api_view(['POST'])
