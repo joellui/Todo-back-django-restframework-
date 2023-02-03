@@ -10,13 +10,6 @@ from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 class UserCreateAPIView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
-class UserDetailAPIView(generics.RetrieveAPIView):
-    permission_classes=(permissions.IsAuthenticated, )
-    
-    def get(self, request):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
-
 class LoginAPIView(generics.CreateAPIView):
     serializer_class = LoginSerializer
 
