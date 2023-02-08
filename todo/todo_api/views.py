@@ -30,7 +30,7 @@ def taskDetail(request, todo_id):
     return Response(serialize.data, status=status.HTTP_200_OK)
 
 # Update Task
-@api_view(['POST'])
+@api_view(['PUT'])
 def taskUpdate(request, todo_id):
     task = Todo.objects.get(id=todo_id)
     serializer = TodoSerializer(instance=task, data=request.data)
